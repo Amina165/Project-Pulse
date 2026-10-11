@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse - Blood Group Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <div id="siteHeader"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
+    <div class="mb-8">
+      <h1 class="text-3xl font-extrabold text-gray-900">Blood Group Compatibility Guide</h1>
+      <p class="text-xs text-gray-400 mt-1">Learn who can receive blood from whom before requesting or donating</p>
+    </div>
+
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-red-50 text-red-700 font-extrabold uppercase">
+            <tr>
+              <th class="p-4">Blood Type</th>
+              <th class="p-4">Can Donate To</th>
+              <th class="p-4">Can Receive From</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 font-medium">
+            <tr><td class="p-4 font-extrabold text-red-600">O-</td><td class="p-4">EVERYONE (Universal Donor)</td><td class="p-4">O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">O+</td><td class="p-4">O+, A+, B+, AB+</td><td class="p-4">O+, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">A-</td><td class="p-4">A+, A-, AB+, AB-</td><td class="p-4">A-, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">A+</td><td class="p-4">A+, AB+</td><td class="p-4">A+, A-, O+, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">B-</td><td class="p-4">B+, B-, AB+, AB-</td><td class="p-4">B-, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">B+</td><td class="p-4">B+, AB+</td><td class="p-4">B+, B-, O+, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">AB-</td><td class="p-4">AB+, AB-</td><td class="p-4">AB-, A-, B-, O-</td></tr>
+            <tr><td class="p-4 font-extrabold text-red-600">AB+</td><td class="p-4">AB+</td><td class="p-4">EVERYONE (Universal Recipient)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

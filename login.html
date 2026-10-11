@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up - Pulse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <div id="siteHeader"></div>
+
+  <main class="w-full flex-grow px-4">
+    <div class="max-w-md mx-auto mt-12 mb-12 p-8 bg-white rounded-3xl border border-gray-100 shadow-sm">
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-2xl mx-auto flex items-center justify-center text-xl mb-3">
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <h1 id="formTitle" class="text-2xl font-extrabold text-gray-900">Welcome to Pulse</h1>
+        <p id="formSubtitle" class="text-xs text-gray-500 mt-1">Sign in or create an account to start saving lives</p>
+      </div>
+
+      <div id="authMessage" class="hidden"></div>
+
+      <form id="authForm" class="space-y-4">
+        <!-- Shown only in Sign Up mode -->
+        <div id="signupFields" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Full Name</label>
+            <input type="text" id="signupName" placeholder="Amina Rahman" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Contact Number</label>
+            <input type="tel" id="signupContact" placeholder="+880 1XXXXXXXXX" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Location / City</label>
+            <input type="text" id="signupLocation" placeholder="Dhaka" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Blood Group</label>
+            <select id="authBloodGroup" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600 bg-white">
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
+          <input type="email" id="authEmail" required placeholder="name@example.com" autocomplete="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">Password</label>
+          <input type="password" id="authPassword" required minlength="6" placeholder="••••••••" autocomplete="current-password" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-red-600">
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-bold py-3.5 rounded-xl transition-all text-sm shadow-md shadow-red-100">
+          Sign In
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-xs text-gray-500">
+        <span id="toggleText">Don't have an account?</span>
+        <button type="button" id="toggleModeBtn" class="text-red-600 font-extrabold ml-1 hover:underline">Sign Up</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

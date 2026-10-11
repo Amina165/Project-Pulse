@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // Private profile: only the owner can read/write it.
+    match /users/{uid} {
+      allow read, create, update: if isOwner(uid);
+      allow delete: if false;
+    }
+
+    // Donor directory: any signed-in member can search; only you can edit your own entry.
+    match /donors/{uid} {
+      allow read: if signedIn();
+      allow create, update, delete: if isOwner(uid);
+    }
+
+    // Emergency requests: public to read, signed-in users can post, owners can edit/delete.
+    match /emergencyRequests/{id} {
+      allow read: if true;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    // Personal donation log.
+    match /donations/{id} {
+      allow read, update, delete: if signedIn() && resource.data.uid == request.auth.uid;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+    }
+
+    // Blood bank directory: public to read, signed-in users can add. Edit/delete from the Firebase console.
+    match /bloodBanks/{id} {
+      allow read: if true;
+      allow create: if signedIn();
+      allow update, delete: if false;
+    }
+  }
+}

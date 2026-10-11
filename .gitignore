@@ -1,0 +1,8 @@
+﻿node_modules
+dist
+.firebase
+.env
+.claude
+.agents
+agent
+skills-lock.json

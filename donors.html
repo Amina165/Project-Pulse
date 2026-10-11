@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse - Find Donors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <div id="siteHeader"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
+    <div class="mb-8">
+      <h1 class="text-3xl font-extrabold text-gray-900">Find Blood Donors</h1>
+      <p class="text-xs text-gray-400 mt-1">Real-time donor directory (members only)</p>
+    </div>
+
+    <form id="filterForm" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-xl border border-gray-200">
+        <i class="fa-solid fa-droplet text-red-500 text-sm"></i>
+        <select id="filterGroup" class="w-full bg-transparent text-xs font-bold text-gray-700 focus:outline-none">
+          <option value="">All Blood Groups</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+
+      <div class="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-xl border border-gray-200">
+        <i class="fa-solid fa-location-dot text-red-500 text-sm"></i>
+        <input type="text" id="filterLocation" placeholder="Filter by City / Area" class="w-full bg-transparent text-xs font-bold text-gray-700 placeholder-gray-400 focus:outline-none">
+      </div>
+
+      <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+        <i class="fa-solid fa-filter"></i> Apply Filter
+      </button>
+    </form>
+
+    <div id="donorsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="col-span-full py-16 text-center text-gray-400 bg-white border border-gray-100 rounded-3xl">
+        <i class="fa-solid fa-spinner fa-spin text-2xl text-red-600 mb-3"></i>
+        <p class="text-xs font-bold text-gray-600">Loading registered donors...</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/donors.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse - Blood Banks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <div id="siteHeader"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
+    <div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-extrabold text-gray-900">Blood Banks Directory</h1>
+        <p class="text-xs text-gray-400 mt-1">Hospitals and blood banks, live from Firebase</p>
+      </div>
+      <button id="btnAddBloodBank" type="button" class="bg-gray-900 hover:bg-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 self-start sm:self-auto">
+        <i class="fa-solid fa-plus"></i> Add Hospital / Bank
+      </button>
+    </div>
+
+    <!-- Add form (opens after login) -->
+    <div id="bankFormPanel" class="hidden bg-white p-6 rounded-3xl border border-gray-100 shadow-sm mb-8">
+      <form id="bankForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input id="bankName" required placeholder="Bank / Hospital name" class="px-3 py-2.5 bg-gray-50 rounded-xl border border-gray-200 text-xs focus:outline-none">
+        <input id="bankLocation" required placeholder="Location" class="px-3 py-2.5 bg-gray-50 rounded-xl border border-gray-200 text-xs focus:outline-none">
+        <input id="bankContact" type="tel" required placeholder="Contact number" class="px-3 py-2.5 bg-gray-50 rounded-xl border border-gray-200 text-xs focus:outline-none">
+        <input id="bankUnits" placeholder="Available units (e.g. A+: 12, O-: 3)" class="px-3 py-2.5 bg-gray-50 rounded-xl border border-gray-200 text-xs focus:outline-none">
+        <div class="md:col-span-2 flex items-center gap-3">
+          <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs px-6 py-2.5 rounded-xl">Save</button>
+          <p id="bankMessage" class="text-xs font-bold text-red-600"></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-gray-50 border-b border-gray-100 text-gray-500 font-bold uppercase tracking-wider">
+            <tr>
+              <th class="p-4">Bank / Hospital</th>
+              <th class="p-4">Location</th>
+              <th class="p-4">Contact</th>
+              <th class="p-4">Available Units</th>
+              <th class="p-4">Action</th>
+            </tr>
+          </thead>
+          <tbody id="bloodBankTableBody" class="divide-y divide-gray-100">
+            <tr>
+              <td colspan="5" class="p-8 text-center text-gray-400">
+                <i class="fa-solid fa-spinner fa-spin text-xl text-red-600 mb-2"></i>
+                <p>Fetching blood bank data...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/bloodbanks.js"></script>
+</body>
+</html>
