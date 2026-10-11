@@ -4,7 +4,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-// Your exact configuration credentials from Firebase Console
 const firebaseConfig = {
   apiKey: "AIzaSyCLqPxXwWDo5tBVdFdx4Xi8UevFxELsa-8",
   authDomain: "pulse-94ce6.firebaseapp.com",
@@ -15,7 +14,6 @@ const firebaseConfig = {
   measurementId: "G-ZR1B5HK1XL"
 };
 
-// Initialize Firebase App & Export Shared Services
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app); // <-- Ready to use in your auth.js file!
 export const db = getFirestore(app);

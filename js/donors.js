@@ -11,7 +11,6 @@ const filterLocation = document.getElementById("filterLocation");
 
 let allDonors = [];
 
-// Pre-fill filters when coming from the home page search (donors.html?group=A%2B&location=Dhaka)
 const params = new URLSearchParams(location.search);
 if (params.get("group")) filterGroup.value = params.get("group");
 if (params.get("location")) filterLocation.value = params.get("location");
@@ -70,7 +69,7 @@ filterLocation.addEventListener("input", render);
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    // Donor contact details are only visible to signed-in users (anti-scraping).
+    
     message(`
       <i class="fa-solid fa-lock text-2xl text-red-600 mb-3"></i>
       <p class="text-sm font-bold text-gray-700">Please sign in to search donors</p>

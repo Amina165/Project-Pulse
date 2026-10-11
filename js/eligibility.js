@@ -25,7 +25,7 @@ const dateInput = document.getElementById("donationDateInput");
 
 if (dateInput) dateInput.max = new Date().toISOString().slice(0, 10);
 
-let latestDate = ""; // newest logged donation (YYYY-MM-DD)
+let latestDate = ""; 
 
 function setCard(kind, title, desc) {
   const colors = {
@@ -44,10 +44,7 @@ function flash(text, ok) {
 }
 
 onAuthStateChanged(auth, (user) => {
-  if (!user) return; // donor.js handles redirecting to login
-
-  // No orderBy here: where() + orderBy() on different fields needs a manual
-  // Firestore index. Sorting in the browser avoids that.
+  if (!user) return; 
   const q = query(collection(db, "donations"), where("uid", "==", user.uid));
 
   onSnapshot(
@@ -117,12 +114,12 @@ if (donationLogForm) {
         createdAt: serverTimestamp(),
       });
 
-      // Keep the public donor record's "last donated" date up to date (if registered).
+      
       if (!latestDate || date >= latestDate) {
         try {
           await updateDoc(doc(db, "donors", user.uid), { lastDonationDate: date });
         } catch {
-          /* not registered as a donor yet - that's fine */
+          
         }
       }
 

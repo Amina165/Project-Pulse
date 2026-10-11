@@ -11,7 +11,6 @@ const form = document.getElementById("authForm");
 
 if (form) {
   const params = new URLSearchParams(location.search);
-  // Where to go after login (e.g. login.html?next=donate.html)
   const nextPage = safeNext(params.get("next"), "profile.html");
 
   const signupFields = document.getElementById("signupFields");
@@ -58,8 +57,7 @@ if (form) {
   });
   applyMode();
 
-  // Already signed in? Skip the login page.
-  // (Ignored while a sign-up is in progress so the profile is saved first.)
+  
   onAuthStateChanged(auth, (user) => {
     if (user && !busy) location.replace(nextPage);
   });

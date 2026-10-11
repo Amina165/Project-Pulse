@@ -2,7 +2,7 @@ import { auth, db } from "./firebase-config.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 
-// DOM Elements
+
 const donorForm = document.getElementById("donorForm");
 const fullNameInput = document.getElementById("fullName");
 const contactNumberInput = document.getElementById("contactNumber");
@@ -19,18 +19,18 @@ if (lastDonationDateInput) {
   lastDonationDateInput.max = new Date().toISOString().slice(0, 10);
 }
 
-// 1. Listen for authentication state
+
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     currentUser = user;
     await loadUserProfileAndDonorData(user.uid);
   } else {
-    // Donating needs an account: send them to login, then bring them back here.
+    
     location.replace("login.html?next=donate.html");
   }
 });
 
-// 2. Fetch existing donor data (or fall back to the basic profile)
+
 async function loadUserProfileAndDonorData(uid) {
   try {
     const donorSnap = await getDoc(doc(db, "donors", uid));
@@ -49,7 +49,7 @@ async function loadUserProfileAndDonorData(uid) {
 }
 
 function populateForm(data) {
-  const phone = data.contactNumber || data.contact; // older accounts used "contact"
+  const phone = data.contactNumber || data.contact; 
   if (fullNameInput && data.fullName) fullNameInput.value = data.fullName;
   if (contactNumberInput && phone) contactNumberInput.value = phone;
   if (locationInput && data.location) locationInput.value = data.location;
@@ -88,7 +88,7 @@ if (donorForm) {
     try {
       await setDoc(doc(db, "donors", currentUser.uid), donorData, { merge: true });
 
-      // Keep the main user record in sync
+      
       await setDoc(
         doc(db, "users", currentUser.uid),
         {

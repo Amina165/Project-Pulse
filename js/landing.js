@@ -18,7 +18,6 @@ function setStat(id, value, note) {
   if (note && noteEl && noteEl !== el) noteEl.textContent = note;
 }
 
-// Hero search -> donors page with filters in the URL
 document.getElementById("heroSearchForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const group = document.getElementById("heroBloodGroup").value;
@@ -29,7 +28,6 @@ document.getElementById("heroSearchForm")?.addEventListener("submit", (e) => {
   location.href = "donors.html" + (p.toString() ? "?" + p : "");
 });
 
-// Public live stats
 onSnapshot(
   collection(db, "emergencyRequests"),
   (snap) => setStat("statEmergencyRequests", snap.size, "Live from Firebase"),
@@ -42,7 +40,6 @@ onSnapshot(
   () => setStat("statBloodBanks", "--", "Unavailable right now")
 );
 
-// The donor list is private (signed-in only), so the count is too.
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     setStat("statRegisteredDonors", "--", "Sign in to see live count");
@@ -57,7 +54,6 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-// Latest emergency requests
 const homeRecentRequests = document.getElementById("homeRecentRequests");
 if (homeRecentRequests) {
   const q = query(collection(db, "emergencyRequests"), orderBy("createdAt", "desc"), limit(2));
